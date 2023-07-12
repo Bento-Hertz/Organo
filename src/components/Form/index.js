@@ -4,7 +4,7 @@ import DropdownList from '../DropdownList';
 import Button from '../Button';
 import { useState } from 'react';
 
-const Form = () => {
+const Form = (props) => {
 
     const teams = [
         'Programming',
@@ -21,9 +21,15 @@ const Form = () => {
     const [image, setImage] = useState('');
     const [team, setTeam] = useState('');
 
+    //When the form is submited, this function will collect all the updated data from the fields and put them into a single object (collaborator). It also prevents the page from refreshing.
     const onSave = (event) => {
         event.preventDefault();
-        console.log('submited => ',name,role,image,team);
+        props.onRegisteredCollaborator({
+            name,
+            role,
+            image,
+            team
+        })
     }
 
     return (
@@ -35,6 +41,7 @@ const Form = () => {
                     label="Name" 
                     placeholder="Type your name"
                     value={name}
+                    //replaces the current value by the new updated value from the child component (textField)
                     whenChanged={value => setName(value)}
                  />
                 <TextField
