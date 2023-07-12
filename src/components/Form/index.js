@@ -6,16 +6,6 @@ import { useState } from 'react';
 
 const Form = (props) => {
 
-    const teams = [
-        'Programming',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX and Design',
-        'Mobile',
-        'Innovation and Managing'
-    ]
-
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
     const [image, setImage] = useState('');
@@ -35,7 +25,7 @@ const Form = (props) => {
     return (
         <section className='form'>
             <form onSubmit={onSave}>
-                <h2>Fill the data to create the collaborator card</h2>
+                <h2>Fill the data to create a new collaborator card</h2>
                 <TextField
                     required={true} 
                     label="Name" 
@@ -60,7 +50,7 @@ const Form = (props) => {
                 <DropdownList 
                     required={true} 
                     label="Team"
-                    items={teams}
+                    teamNames={props.teamNames}
                     value={team}
                     whenChanged={value => setTeam(value)}
                 />
