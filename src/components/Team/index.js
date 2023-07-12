@@ -10,7 +10,7 @@ const Team = (props) => {
         (props.collaborators.length > 0) ? <section className='team' style={backgroundColor}>
             <h3 style={borderColor}>{props.team.name}</h3>
             <div className='collaborators'>
-                { props.collaborators.map(collaborator => <Collaborator collaborator={collaborator}/>) }
+                { props.collaborators.map(collaborator => <Collaborator key={collaborator.name} collaborator={collaborator} backgroundColor={props.team.primaryColor}/>) }
             </div>
         </section>
         : ''

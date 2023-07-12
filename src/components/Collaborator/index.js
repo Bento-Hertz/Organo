@@ -1,9 +1,12 @@
 import './style.css';
 
 const Collaborator = (props) => {
+
+    const backgroundColor = {backgroundColor: props.backgroundColor};
+
     return (
         <div className='collaborator'>
-            <div className='header'>
+            <div className='header' style={backgroundColor}>
                 <img src={props.collaborator.image} alt={props.collaborator.name}/>
             </div>
             <div className='footer'>

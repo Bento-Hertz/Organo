@@ -13,6 +13,7 @@ const DropdownList = (props) => {
         <div className='dropdown-list'>
             <label>{props.label}</label>
             <select onChange={changeValue} required={isRequired} value={updatedValue}>
+                <option value=""></option>
                 { props.teamNames.map(name => <option key={name}>{name}</option>) }
             </select>
         </div>
