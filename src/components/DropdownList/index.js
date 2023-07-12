@@ -1,10 +1,10 @@
 import './style.css';
 
-const SuspendedList = (props) => {
+const DropdownList = (props) => {
     return (
         <div className='suspended-list'>
             <label>{props.label}</label>
-            <select>
+            <select onChange={event => props.whenChanged(event.target.value)} required={props.required} value={props.value}>
                 { props.items.map(item => { 
                     return <option key={item}>{item}</option>;
                 })}
@@ -13,4 +13,4 @@ const SuspendedList = (props) => {
     );
 }
 
-export default SuspendedList;
+export default DropdownList;
