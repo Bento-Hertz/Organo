@@ -1,3 +1,4 @@
+import Collaborator from '../Collaborator';
 import './style.css';
 
 const Team = (props) => {
@@ -6,9 +7,13 @@ const Team = (props) => {
     const borderColor = {borderColor: props.team.primaryColor};
 
     return (
-        <section className='team' style={backgroundColor}>
+        (props.collaborators.length > 0) ? <section className='team' style={backgroundColor}>
             <h3 style={borderColor}>{props.team.name}</h3>
+            <div className='collaborators'>
+                { props.collaborators.map(collaborator => <Collaborator collaborator={collaborator}/>) }
+            </div>
         </section>
+        : ''
     );
 }
 
