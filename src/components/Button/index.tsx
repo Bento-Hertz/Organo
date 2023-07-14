@@ -1,6 +1,11 @@
+import { ReactElement } from 'react';
 import './style.css';
 
-const Button = (props) => {
+interface ButtonProps {
+    children: ReactElement | string
+}
+
+const Button = (props: ButtonProps) => {
     return (
         <button className='button'>
             {props.children}

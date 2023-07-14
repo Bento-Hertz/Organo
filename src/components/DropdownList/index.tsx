@@ -1,11 +1,19 @@
 import './style.css';
 
-const DropdownList = (props) => {
+interface DropdownListProps {
+    whenChanged: (value: string) => void
+    label: string
+    required: boolean
+    value: string
+    teamNames: string[]
+}
+
+const DropdownList = (props : DropdownListProps) => {
 
     const updatedValue = `${props.value}`
     const isRequired = props.required
 
-    const changeValue = (event) => {
+    const changeValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
         props.whenChanged(event.target.value);
     }
 

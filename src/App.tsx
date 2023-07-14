@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner';
 import Form from './components/Form';
 import Team from './components/Team';
+import { ICollaborator } from './shared/interfaces/ICollaborator';
 
 function App() {
 
@@ -43,17 +44,16 @@ function App() {
     }
   ]
 
-  const [collaborators, setCollaborators] = useState([]);
+  const [collaborators, setCollaborators] = useState<ICollaborator[]>([]);
 
-  const onNewAddedCollaborator = (collaborator) => {
-    debugger;
+  const onNewAddedCollaborator = (collaborator: ICollaborator) => {
     //this will add another collaborator to the end of the list instead of replacing the alredy existing collaborators in the list
     setCollaborators([...collaborators, collaborator]);
   }
 
   return (
     <div className="App">
-      <Banner />
+      <Banner imageAddress='./images/banner.png'/>
       <Form teamNames={teams.map(team => team.name)} onRegisteredCollaborator={collaborator => onNewAddedCollaborator(collaborator)}/>
       { teams.map(team => <Team 
         key={team.name} 

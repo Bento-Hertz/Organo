@@ -3,27 +3,36 @@ import TextField from '../TextField';
 import DropdownList from '../DropdownList';
 import Button from '../Button';
 import { useState } from 'react';
+import { ICollaborator } from '../../shared/interfaces/ICollaborator';
 
-const Form = (props) => {
+interface FormProps {
+    onRegisteredCollaborator: (collaborator: ICollaborator) => void
+    teamNames: string[]
+}
+
+const Form = (props: FormProps) => {
 
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
     const [image, setImage] = useState('');
     const [team, setTeam] = useState('');
+    const [date, setDate] = useState('');
 
     //When the form is submited, this function will collect all the updated data from the fields and put them into a single object (collaborator). It also prevents the page from refreshing.
-    const onSave = (event) => {
+    const onSave = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         props.onRegisteredCollaborator({
             name,
             role,
             image,
-            team
+            team,
+            date
         })
         setName('');
         setRole('');
         setImage('');
         setTeam('');
+        setDate('');
     }
 
     return (
@@ -46,10 +55,18 @@ const Form = (props) => {
                     whenChanged={value => setRole(value)}
                 />
                 <TextField 
+                    required={true}
                     label="Image" 
                     placeholder="Type the image address"
                     value={image} 
                     whenChanged={value => setImage(value)}
+                />
+                <TextField
+                    required={true} 
+                    label="Initial date"
+                    value={date} 
+                    whenChanged={value => setDate(value)}
+                    type="date"
                 />
                 <DropdownList 
                     required={true} 
